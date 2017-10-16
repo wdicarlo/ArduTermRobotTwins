@@ -10,6 +10,7 @@ Documentation     Yin Yang Test cases using the keyword-driven testing approach.
 Library           ArduTermRobotTwins.py
 
 *** Test Cases ***
-Setup digital pin 02
-	Setup Pin Status	01 0
-	Check Pin Status	01 0
+Setup digital pin 13
+	Setup Pin Mode		13 	1	   	# input mode
+	Setup Pin Status	13 	0		# set yin pin
+	Check Pin Status	13 	0		# check yang pin

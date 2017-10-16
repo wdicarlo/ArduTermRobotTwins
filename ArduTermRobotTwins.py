@@ -13,15 +13,28 @@ class ArduTermRobotTwins(object):
         self._yin = YinBoard('/dev/ttyS0')
         self._yang = YangBoard('/dev/ttyS1')
 
+    def setup_pin_mode(self, pin, mode):
+        if mode == 1:
+            yin_pin_mode = "1"
+            yang_pin_mode = "0"
+        else:
+            yin_pin_mode = "0"
+            yang_pin_mode = "1"
+
+        self._yin_result = self._yin.send("pinmode( "+pin+", "+yin_pin_mode+" )")
+        self._yang_result = self._yang.send("pinmode( "+pin+", "+ yang_pin_mode+" )")
+
     def setup_pin_status(self, pin, val):
         # TODO: replace following dummy code, to set the configuration of the pin
-        self._yin_result = self._yin.send("print \""+pin+"="+val+"\"")
+        #self._yin_result = self._yin.send("print \""+pin+"="+val+"\"")
+        self._yin_result = self._yin.send("dw( "+pin+", "+val+" )")
 
     def check_pin_status(self, pin, expected):
         # TODO: replace following dummy code, to get the status of the pin
-        self._yang_result = self._yang.send("print \""+pin+"\"")
-        if self._yang_result != expected_config:
-            raise AssertionError('%s != %s' % (self._result, expected))
+        #self._yang_result = self._yang.send("print \""+pin+"\"")
+        self._yang_result = self._yang.send("dr( "+pin+" )")
+        if self._yang_result != expected:
+            raise AssertionError('%s != %s' % (self._yang_result, expected))
 
 
     def setup_board_configuration(self, config):

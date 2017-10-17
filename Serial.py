@@ -63,7 +63,7 @@ class Serial(object):
     def receive(self):
         eot=False
         response=''
-        maxemptylines=20
+        maxemptylines=3
         emptylines=0
         numlines=0
         while(not eot):

@@ -55,23 +55,23 @@ class ArduTermRobotTwins(object):
 
     def setup_twins_pin_mode(self, pin, mode):
         modev=int(mode)
-        nmodev=1-modev
+        nmodev=str(1-modev)
 
-        self._yin_result = self._yin.send("pinmode( "+pin+", "+modev+" )")
+        self._yin_result = self._yin.send("pinmode( "+pin+", "+mode+" )")
         self._yang_result = self._yang.send("pinmode( "+pin+", "+nmodev+" )")
 
     def setup_twins_pin_status(self, pin, val):
         # TODO: replace following dummy code, to set the configuration of the pin
         #self._yin_result = self._yin.send("print \""+pin+"="+val+"\"")
         pval=int(val)
-        nval=1-pval
+        nval=str(1-pval)
         self._yin_result = self._yin.send("d"+pin+"="+val+" )")
         self._yang_result = self._yang.send("d"+pin+"="+nval+" )")
 
     def check_twins_pin_status(self, pin, expected):
         # TODO: replace following dummy code, to get the status of the pin
         #self._yang_result = self._yang.send("print \""+pin+"\"")
-        self._yang_result = self._yang.send("dr( d"+pin+" )")
+        self._yang_result = self._yang.send("print( d"+pin+" )")
         if self._yang_result != expected:
             raise AssertionError('%s != %s' % (self._yang_result, expected))
 

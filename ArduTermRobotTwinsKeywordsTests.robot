@@ -11,6 +11,6 @@ Library           ArduTermRobotTwins.py
 
 *** Test Cases ***
 Setup digital pin 13
-	Setup Pin Mode		13 	1	   	# input mode
-	Setup Pin Status	13 	0		# set yin pin
-	Check Pin Status	13 	0		# check yang pin
+	Setup Twins Pin Mode		13 	1	   	# input mode
+	Setup Twins Pin Status		13 	0		# set yin pin
+	Check Twins Pin Status		13 	0		# check yang pin

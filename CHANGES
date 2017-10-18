@@ -1,3 +1,10 @@
+Version 0.2.0:
+ - Adjusted test of twins digital pin
+ - Merge tag 'r0.1.0' into develop
+ - Improved configuration and test of a single digital pin
+ - Added configuration and test of a single digital pin (still not working)
+ - Merge branch 'release/r0.1.0'
+
 Version 0.1.0
  - Initial import (not fully working)
  - Initial commit
